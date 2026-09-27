@@ -1,6 +1,6 @@
-# [Project name]
+# W2V Waste2Value
 
-_Replace the heading above with the project's name, and this line with one sentence describing what this app does for users._
+W2V is an interactive FoodTech and sustainability platform that helps kitchens and food processing units plan production, recover surplus, and measure impact.
 
 ## Run & Operate
 
@@ -22,19 +22,25 @@ _Replace the heading above with the project's name, and this line with one sente
 
 ## Where things live
 
-_Populate as you build — short repo map plus pointers to the source-of-truth file for DB schema, API contracts, theme files, etc._
+- `artifacts/waste2value/src/App.tsx` — routed application flows and role-specific screens
+- `artifacts/waste2value/src/index.css` — W2V visual language and responsive UI tokens
+- `lib/api-spec/openapi.yaml` — source of truth for typed API contracts
+- `artifacts/api-server/src/routes/w2v.ts` — onboarding, planning, recovery, telemetry, and impact routes
+- `lib/db/src/schema/w2v.ts` — persisted W2V records
 
 ## Architecture decisions
 
-_Populate as you build — non-obvious choices a reader couldn't infer from the code (3-5 bullets)._
+- The frontend uses typed generated API hooks and keeps submitted result states separate from form input states so predictions are never shown before a submit.
+- Operational telemetry is realistic simulated data until private sensor feeds are connected; selected readings still drive alerts and detail states.
+- Registration and admin decisions are persisted as generic W2V records so additional domain tables can be introduced without changing the first user flows.
 
 ## Product
 
-_Describe the high-level user-facing capabilities of this app once they exist._
+Users can register as institutional kitchens or FPUs, verify with OTP, enter role-specific workspaces, generate planning recommendations, analyze energy and inventory, publish recovery listings, inspect simulated storage and machine telemetry, and review activity-derived impact metrics. Admins can review and decide pending applications.
 
 ## User preferences
 
-_Populate as you build — explicit user instructions worth remembering across sessions._
+The user explicitly asked for a real interactive application rather than a documentation or PDF-like UI, using the supplied W2V logo and deep green, light green, orange, and off-white brand language.
 
 ## Gotchas
 

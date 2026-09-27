@@ -1,0 +1,28 @@
+kind = "web"
+previewPath = "/"
+title = "W2V Waste2Value"
+description = "An interactive FoodTech and sustainability platform for institutional kitchens, food processing units, receivers, and administrators to reduce waste, recover value, and measure impact."
+version = "1.0.0"
+id = "artifacts/waste2value"
+router = "path"
+
+[[services]]
+name = "web"
+paths = [ "/" ]
+localPort = 25499
+
+[services.development]
+run = "pnpm --filter @workspace/waste2value run dev"
+
+[services.production]
+build = [ "pnpm", "--filter", "@workspace/waste2value", "run", "build" ]
+serve = "static"
+publicDir = "artifacts/waste2value/dist/public"
+
+[[services.production.rewrites]]
+from = "/*"
+to = "/index.html"
+
+[services.env]
+PORT = "25499"
+BASE_PATH = "/"

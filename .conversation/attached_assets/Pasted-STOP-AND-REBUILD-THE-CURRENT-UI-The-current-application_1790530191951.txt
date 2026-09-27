@@ -1,0 +1,1173 @@
+STOP AND REBUILD THE CURRENT UI.
+
+The current application is NOT acceptable because it looks like a document/PDF describing features instead of a real interactive application.
+
+Do NOT create a reading page, documentation page, or text-heavy presentation.
+
+BUILD THE ACTUAL INTERACTIVE W2V APPLICATION.
+
+====================================================
+W2V — WASTE2VALUE
+====================================================
+
+Logo:
+Use the uploaded W2V logo exactly.
+
+Name:
+W2V
+Waste2Value
+
+Tagline:
+“Reduce Waste. Create Value.”
+
+Design the entire application around the logo:
+- deep green
+- light green
+- orange accents
+- clean off-white surfaces
+- modern cards
+- subtle circular/recovery-inspired background graphics
+- professional FoodTech + AI + sustainability appearance
+
+Do NOT use a generic white admin-template background.
+
+====================================================
+IMPORTANT — HOW THE APPLICATION MUST WORK
+====================================================
+
+Every feature must be an actual interactive screen.
+
+NEVER replace a form with explanatory text.
+
+NEVER display a prediction before the user enters the required information.
+
+Every major workflow must follow:
+
+INPUT
+↓
+USER CLICKS BUTTON
+↓
+BACKEND / AI PROCESSING
+↓
+RESULT
+↓
+USER CONFIRMS
+↓
+DATABASE SAVE
+↓
+NEXT STEP
+
+The application must react to the user's input.
+
+If the user changes the input, the output must change accordingly.
+
+Do NOT hardcode one example product, recipe, FPU, kitchen or prediction.
+
+====================================================
+1. ACTUAL HOME PAGE
+====================================================
+
+REBUILD THE CURRENT HOME PAGE COMPLETELY.
+
+The first screen must visually contain:
+
+[ W2V LOGO ]
+
+W2V
+
+Waste2Value
+
+“Reduce Waste. Create Value.”
+
+Short description:
+
+“An AI-powered ecosystem to reduce food waste, recover resources, enable sustainable redistribution and measure impact.”
+
+Main question:
+
+“Welcome to W2V”
+
+Then two large buttons:
+
+[ ADMIN ]
+
+[ USER ]
+
+Also show:
+
+About Us
+Contact Us
+Help
+Subscription
+
+The home page must NOT show only:
+
+“Institutional Kitchen”
+“FPU”
+
+Those options appear AFTER the user selects USER.
+
+====================================================
+2. USER FLOW
+====================================================
+
+When USER is clicked:
+
+Show a proper role-selection screen.
+
+TITLE:
+
+“How do you use W2V?”
+
+Show two sections:
+
+DONOR
+
+[ Institutional Kitchen ]
+
+[ Food Processing Unit ]
+
+RECEIVER
+
+[ NGO ]
+
+[ Food Bank ]
+
+[ Shelter ]
+
+[ Community Kitchen ]
+
+[ Secondary Buyer / Industry ]
+
+Each must be a clickable card/button.
+
+====================================================
+3. INSTITUTIONAL KITCHEN REGISTRATION
+====================================================
+
+When:
+
+USER
+→ DONOR
+→ INSTITUTIONAL KITCHEN
+
+open an actual registration FORM.
+
+Fields:
+
+Organization/Kitchen Name
+Authorized Representative
+Phone
+Email
+Password
+Address
+Location
+Government Registration/Proof ID
+Upload Proof Document
+
+Button:
+
+[ REGISTER ]
+
+Then:
+
+OTP VERIFICATION
+
+Show:
+
+“Enter the OTP sent to your registered contact.”
+
+[ OTP INPUT ]
+
+[ VERIFY OTP ]
+
+After successful OTP:
+
+ACCOUNT STATUS:
+“Pending Admin Verification”
+
+Do not give access to the authority dashboard until an authorized W2V admin approves it.
+
+====================================================
+4. FPU REGISTRATION
+====================================================
+
+USER
+→ DONOR
+→ FPU
+
+Open the SAME registration structure.
+
+Additional fields:
+
+FPU Type
+Product Category
+
+Then:
+
+REGISTER
+→ OTP
+→ Pending Verification
+→ Admin Review
+
+====================================================
+5. ADMIN
+====================================================
+
+ADMIN must open a REAL ADMIN LOGIN.
+
+Email/Phone
+Password
+OTP
+
+Then Admin Dashboard.
+
+Admin dashboard must contain real interactive sections:
+
+Pending Verifications
+Users
+Receivers
+Industries
+Recovery Listings
+Deliveries
+Subscriptions
+Impact Analytics
+ESG Analytics
+Carbon Credit Records
+Audit Logs
+
+Most importantly:
+
+PENDING VERIFICATIONS
+
+Admin can open an application and see:
+
+Organization information
+Representative
+Contact
+Location
+Registration/proof information
+Uploaded document
+
+AI may assist with screening.
+
+BUT:
+
+AI MUST NEVER automatically approve the authority.
+
+Admin must have:
+
+[ APPROVE ]
+
+[ REJECT ]
+
+[ REQUEST MORE INFORMATION ]
+
+When Admin approves:
+
+User receives notification:
+
+“Your W2V account has been verified.”
+
+Then the user can log in.
+
+====================================================
+6. INSTITUTIONAL KITCHEN PROFILE
+====================================================
+
+After approval and login:
+
+Show:
+
+W2V logo
+Welcome
+Kitchen/organization name
+Verification status
+Subscription status
+Impact Points
+Leaderboard position
+Notification bell
+
+Main large cards:
+
+[ PLAN ]
+
+[ BUY ]
+
+[ IMPACT DASHBOARD ]
+
+Also:
+
+Help
+About Us
+Profile
+Notifications
+Leaderboard
+
+====================================================
+7. INSTITUTIONAL KITCHEN PLAN
+====================================================
+
+Click:
+
+PLAN
+
+Open a real menu containing:
+
+[ SMART PLANNING ]
+
+[ SMART ENERGY ]
+
+[ SMART INVENTORY ]
+
+[ SMART MENU ]
+
+[ WASTE SEGREGATION ]
+
+[ DETECT SURPLUS ]
+
+These must be clickable cards.
+
+====================================================
+8. SMART PLANNING — ACTUAL FORM
+====================================================
+
+When SMART PLANNING is clicked:
+
+Show:
+
+[ ENTER RECIPE ]
+
+[ AI PLAN ]
+
+Do NOT immediately show an AI prediction.
+
+--------------------------------
+ENTER RECIPE
+--------------------------------
+
+Show actual inputs:
+
+Recipe/Product
+[ Search or enter recipe ]
+
+Meal
+[ Breakfast ]
+[ Lunch ]
+[ Dinner ]
+
+Date
+[ Date Picker ]
+
+Expected servings/people
+[ Number Input ]
+
+Events
+[ Optional Input ]
+
+Button:
+
+[ GENERATE PLAN ]
+
+Only after clicking GENERATE PLAN:
+
+retrieve relevant historical data and run the planning logic.
+
+Then show:
+
+Predicted Demand
+Recommended Quantity
+Safety Buffer
+Reason for recommendation
+
+Buttons:
+
+[ CONFIRM & SAVE PLAN ]
+
+[ EDIT INPUTS ]
+
+When confirmed, save to database.
+
+--------------------------------
+AI PLAN
+--------------------------------
+
+Show actual input fields:
+
+Date
+Meal
+Menu
+Expected attendance
+Events
+
+Button:
+
+[ GENERATE AI PLAN ]
+
+AI uses relevant historical consumption/production data.
+
+The user must see the result ONLY after submitting the form.
+
+====================================================
+9. SMART ENERGY
+====================================================
+
+Do not make this a text explanation.
+
+Show an actual form:
+
+Select Recipe
+[ Search/select ]
+
+Quantity/Servings
+[ Number ]
+
+Available cooking equipment
+[ Select ]
+
+Energy source
+[ Electricity / LPG / Other ]
+
+Button:
+
+[ ANALYZE ENERGY ]
+
+Then calculate/display:
+
+Recommended method
+Recommended equipment
+Estimated energy
+Estimated energy saving
+Estimated CO2e reduction
+
+Allow:
+
+[ SAVE RESULT ]
+
+====================================================
+10. SMART INVENTORY
+====================================================
+
+Actual form:
+
+Recipe/Product
+[ Select/Search ]
+
+Quantity/Servings
+[ Number ]
+
+Button:
+
+[ CALCULATE REQUIREMENTS ]
+
+Then display:
+
+Ingredient/material
+Required quantity
+Available quantity
+Shortage
+Surplus
+
+Allow editing and saving.
+
+====================================================
+11. SMART MENU
+====================================================
+
+Create an actual menu editor.
+
+User can:
+
+Select date
+Select meal
+Add menu item
+Remove menu item
+Edit menu item
+Save menu
+
+Button:
+
+[ SAVE MENU ]
+
+The saved menu must become available to Smart Planning.
+
+Do not hardcode one permanent menu.
+
+====================================================
+12. DETECT SURPLUS
+====================================================
+
+This exists ONLY for Institutional Kitchens.
+
+When clicked:
+
+Show:
+
+[ QUANTITY ]
+
+[ QUALITY ]
+
+--------------------------------
+QUANTITY
+--------------------------------
+
+Show:
+
+[ TAKE PHOTO ]
+
+[ UPLOAD IMAGE ]
+
+After image upload:
+
+run CV analysis.
+
+Display:
+
+Detected food/item
+Estimated quantity
+Confidence
+
+User can edit the detected quantity.
+
+Button:
+
+[ CONFIRM QUANTITY ]
+
+--------------------------------
+QUALITY
+--------------------------------
+
+Show:
+
+[ MANUAL ]
+
+[ IOT SENSOR ]
+
+Manual:
+user confirms condition.
+
+IoT:
+show simulated readings for:
+
+Temperature
+Weight
+Gas/VOC indicator
+
+Button:
+
+[ CONFIRM QUALITY ]
+
+Then:
+
+[ RECIPIENT MATCHING ]
+
+[ LIST FOR RECOVERY ]
+
+====================================================
+13. WASTE SEGREGATION
+====================================================
+
+Show:
+
+[ COMPUTER VISION ]
+
+[ COMPOST ]
+
+Computer Vision must actually allow:
+
+Take photo
+Upload image
+
+Then detect:
+
+item
+category
+quantity
+
+Then:
+
+[ RECIPIENT MATCHING ]
+
+or
+
+[ LIST FOR RECOVERY / SALE ]
+
+Compost:
+
+Show:
+
+“This material is not eligible for human redistribution.”
+
+NMC Nagpur:
+1800-120-8040
+
+====================================================
+14. INSTITUTIONAL KITCHEN BUY
+====================================================
+
+BUY must open:
+
+RECOVERY MARKETPLACE
+
+Actual listings must come from the database.
+
+Show:
+
+Item
+Quantity
+Category
+Condition
+Location
+Availability
+
+User can click a listing.
+
+Do not make BUY a static information page.
+
+====================================================
+15. FPU PROFILE
+====================================================
+
+FPU profile must NOT have BUY.
+
+Show:
+
+[ PLAN ]
+
+[ RECOVERY / LISTINGS ]
+
+[ IMPACT DASHBOARD ]
+
+Notifications
+Leaderboard
+Help
+About Us
+Profile
+
+====================================================
+16. FPU PLAN
+====================================================
+
+Show exactly five clickable cards:
+
+[ SMART PLANNING ]
+
+[ WASTE SEGREGATION ]
+
+[ STORAGE ]
+
+[ MACHINE MONITORING ]
+
+[ EXPIRY DETECTION ]
+
+Do NOT show Detect Surplus for FPU.
+
+====================================================
+17. FPU SMART PLANNING — VERY IMPORTANT
+====================================================
+
+This MUST be an actual interactive production-planning form.
+
+When clicked:
+
+TITLE:
+
+“AI Production Planning”
+
+Ask:
+
+“What do you want to produce?”
+
+Input:
+
+[ Search existing product ]
+
+[ Enter new product ]
+
+Then:
+
+Production Date
+[ Date Picker ]
+
+Current Stock
+[ Number Input ]
+
+Confirmed Orders
+[ Number Input ]
+
+Optional production constraints
+[ Input ]
+
+BUTTON:
+
+[ GENERATE PRODUCTION PLAN ]
+
+ONLY AFTER THIS BUTTON IS CLICKED:
+
+Retrieve historical data associated with the selected product.
+
+Display a section:
+
+“HISTORICAL DATA USED”
+
+Show dynamically:
+
+Historical sales
+Historical production
+Average demand
+Recent demand trend
+Seasonal pattern
+Day-of-week pattern
+Current stock
+Confirmed orders
+
+Then calculate:
+
+Expected Demand
+Required Production
+Safety Buffer
+Recommended Production
+
+Display:
+
+AI PRODUCTION RECOMMENDATION
+
+Product:
+[user-selected product]
+
+Expected demand:
+[dynamically calculated]
+
+Current stock:
+[user input]
+
+Confirmed orders:
+[user input]
+
+Safety buffer:
+[dynamically calculated]
+
+Recommended production:
+[dynamically calculated]
+
+Explanation:
+[dynamically generated]
+
+Buttons:
+
+[ ACCEPT & SAVE ]
+
+[ EDIT INPUTS ]
+
+THE RESULT MUST CHANGE WHEN THE USER CHANGES THE INPUT.
+
+DO NOT USE A FIXED CHOCOLATE EXAMPLE.
+
+DO NOT USE A FIXED NUMBER LIKE 950 UNITS.
+
+====================================================
+18. FPU STORAGE
+====================================================
+
+Create a real storage-monitoring interface.
+
+Use realistic SIMULATED IoT data because actual factory sensors are unavailable.
+
+Display:
+
+Storage rooms
+Items
+Quantity
+Temperature
+Humidity where applicable
+Timestamp
+Status
+
+The data must be populated.
+
+Do not display an empty page.
+
+Allow the user to select a storage room/item.
+
+If temperature exceeds the configured product-specific limit:
+
+Generate a real notification.
+
+Notification:
+
+“Storage Alert
+[Selected item] is outside its configured storage range.
+Current temperature: XX°C.”
+
+====================================================
+19. FPU MACHINE MONITORING
+====================================================
+
+Create a real machine-monitoring dashboard.
+
+Use realistic simulated PLC/SCADA data.
+
+Display:
+
+Machine
+Status
+Power
+Energy
+Runtime
+Downtime
+Production output
+Events
+
+The user can select a machine to inspect.
+
+When abnormal downtime occurs:
+
+Generate an actual alert.
+
+Calculate:
+
+Estimated production loss
+Energy impact
+
+Save the event.
+
+Do not use one fixed machine.
+
+====================================================
+20. FPU EXPIRY DETECTION
+====================================================
+
+Show two clickable options:
+
+[ CHECK UPLOADED ITEMS ]
+
+[ COMPUTER VISION ]
+
+CHECK UPLOADED ITEMS:
+
+Display actual inventory/products already entered by the FPU.
+
+Fields:
+
+Product
+Quantity
+Batch
+Manufacturing date
+Expiry/use-by/best-before
+Remaining shelf life
+Status
+
+COMPUTER VISION:
+
+[ TAKE PHOTO ]
+
+[ UPLOAD IMAGE ]
+
+Use CV/OCR to detect product and readable date information.
+
+If the date cannot be confidently read:
+
+ask user to manually confirm.
+
+Never invent an expiry date.
+
+====================================================
+21. FPU RECOVERY
+====================================================
+
+If product is still eligible:
+
+[ LIST FOR SALE / RECOVERY ]
+
+→ AI INDUSTRY MATCHING
+→ INDUSTRY ACCEPTS
+→ NOTIFICATION
+→ CONTACT EXCHANGE
+→ ROUTE
+→ PICKUP
+→ DELIVERY
+→ IMPACT UPDATE
+
+If expired/unfit:
+
+Show:
+
+[ COMPOST ]
+
+[ RECYCLING ]
+
+Compost:
+
+NMC Nagpur
+1800-120-8040
+
+Recycling:
+available when appropriate.
+
+Do not automatically call every expired item recyclable.
+
+====================================================
+22. INDUSTRY MATCHING
+====================================================
+
+Do not show a static industry list.
+
+When a user creates a recovery listing:
+
+Use:
+
+Material
+Quantity
+Location
+Category
+Suitability
+
+to dynamically identify suitable registered industries.
+
+Then show:
+
+[ REQUEST / MATCH ]
+
+Industry can:
+
+[ ACCEPT ]
+
+[ REJECT ]
+
+After acceptance:
+
+Both parties receive notifications.
+
+Contact details become available.
+
+====================================================
+23. DELIVERY
+====================================================
+
+Actual workflow:
+
+ACCEPT
+↓
+NOTIFICATION
+↓
+CONTACT EXCHANGE
+↓
+ROUTE OPTIMIZATION
+↓
+PICKUP INITIATED
+↓
+DELIVERY
+↓
+RECEIVER CONFIRMS
+↓
+COMPLETED
+
+Store each status in the database.
+
+====================================================
+24. IMPACT DASHBOARD
+====================================================
+
+This must NOT contain permanently written numbers.
+
+Calculate from database activities.
+
+Filters:
+
+[ TODAY ]
+
+[ THIS MONTH ]
+
+[ THIS YEAR ]
+
+[ CUSTOM ]
+
+Cards:
+
+Food Rescued
+Food Donated
+Deliveries
+Waste Prevented
+Resources Recovered
+Energy Saved
+CO2e Avoided
+ESG Metrics
+Impact Points
+Leaderboard Position
+
+For FPU also:
+
+Production Loss
+Machine Downtime
+Expiry Prevention
+Resource Recovery
+Carbon Credit Assessment
+
+Charts must update when new activities are completed.
+
+====================================================
+25. REWARDS
+====================================================
+
+Impact Points:
+
+10 kg food saved = 1 Impact Point.
+
+After successful delivery:
+
+calculate points.
+
+Update leaderboard.
+
+Send notification:
+
+“🎉 Congratulations!
+You earned [X] Impact Points.
+Your current leaderboard position is #[X].”
+
+FPU also has a separate carbon-credit pathway.
+
+Do NOT invent official carbon credits.
+
+Track estimated CO2e and carbon-credit assessment separately.
+
+====================================================
+26. DATA
+====================================================
+
+DO NOT hardcode one FPU.
+
+DO NOT hardcode one product.
+
+DO NOT hardcode one recipe.
+
+DO NOT hardcode one kitchen.
+
+DO NOT hardcode one prediction.
+
+The user must create/select their own data.
+
+For missing private operational data:
+
+generate realistic simulated data dynamically for the selected organization/product.
+
+For external real-world information:
+
+use verified public Internet data, especially relevant Nagpur data where location-specific information is required.
+
+====================================================
+27. DATABASE
+====================================================
+
+Use a real backend/database.
+
+Store:
+
+users
+organizations
+roles
+products
+recipes
+menus
+historical_sales
+historical_consumption
+production_records
+inventory
+sensor_readings
+storage
+machines
+plc_scada_data
+machine_events
+expiry_records
+cv_results
+recovery_listings
+matches
+deliveries
+notifications
+impact_points
+impact_records
+leaderboard
+subscriptions
+verification_records
+audit_logs
+
+Every user action that matters must be saved.
+
+====================================================
+28. CRITICAL UI REQUIREMENT
+====================================================
+
+Do NOT create pages that only explain what the feature does.
+
+BAD:
+
+“Smart Planning uses AI to predict production based on historical sales.”
+
+GOOD:
+
+“What do you want to produce?”
+
+[ Enter/Search Product ]
+
+“Production date”
+
+[ Select date ]
+
+“Current stock”
+
+[ Enter quantity ]
+
+“Confirmed orders”
+
+[ Enter quantity ]
+
+[ GENERATE PRODUCTION PLAN ]
+
+Then show the calculated result.
+
+EVERY major feature must follow this interactive design.
+
+====================================================
+29. FINAL INSTRUCTION
+====================================================
+
+DELETE/REBUILD the current PDF-like UI.
+
+Do not merely modify the text.
+
+Create actual:
+
+- pages
+- navigation
+- forms
+- buttons
+- inputs
+- uploads
+- backend APIs
+- database operations
+- AI processing
+- results
+- confirmations
+- notifications
+- dashboards
+
+The user must be able to actually USE W2V from beginning to end.
+
+The first priority is:
+
+1. Correct Home Page
+2. Correct role selection
+3. Registration
+4. OTP
+5. Admin verification
+6. Login
+7. Correct Institutional Kitchen/FPU profiles
+8. Interactive PLAN pages
+9. Actual input forms
+10. Backend processing
+11. Database saving
+12. Dashboard updates
+
+Do not turn this prompt into explanatory content inside the application.
+
+BUILD IT.

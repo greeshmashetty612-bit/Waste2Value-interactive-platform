@@ -3,13 +3,25 @@ info:
   # Do not change the title, if the title changes, the import paths will be broken
   title: Api
   version: 0.1.0
-  description: API specification
+  description: Waste2Value interactive sustainability platform API
 servers:
   - url: /api
     description: Base API path
 tags:
   - name: health
     description: Health operations
+  - name: onboarding
+    description: Registration and verification
+  - name: dashboard
+    description: Role dashboard data
+  - name: planning
+    description: AI-assisted planning workflows
+  - name: recovery
+    description: Recovery marketplace workflows
+  - name: monitoring
+    description: Simulated operational monitoring
+  - name: impact
+    description: Impact and ESG metrics
 paths:
   /healthz:
     get:
@@ -24,6 +36,237 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/HealthStatus"
+  /registrations:
+    post:
+      operationId: createRegistration
+      tags: [onboarding]
+      summary: Create a donor registration
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/RegistrationInput"
+      responses:
+        "201":
+          description: Registration created
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Registration"
+  /registrations/{id}/verify:
+    post:
+      operationId: verifyRegistration
+      tags: [onboarding]
+      summary: Verify a registration OTP
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema: { type: integer }
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/OtpInput"
+      responses:
+        "200":
+          description: Verification result
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Registration"
+  /applications:
+    get:
+      operationId: listApplications
+      tags: [onboarding]
+      summary: List pending applications
+      responses:
+        "200":
+          description: Pending applications
+          content:
+            application/json:
+              schema:
+                type: array
+                items: { $ref: "#/components/schemas/Application" }
+  /applications/{id}/decision:
+    post:
+      operationId: decideApplication
+      tags: [onboarding]
+      summary: Record an admin decision
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema: { type: integer }
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/DecisionInput"
+      responses:
+        "200":
+          description: Updated application
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Application"
+  /dashboard:
+    get:
+      operationId: getDashboard
+      tags: [dashboard]
+      summary: Get a role-specific dashboard
+      parameters:
+        - name: role
+          in: query
+          required: true
+          schema:
+            type: string
+            enum: [kitchen, fpu, receiver, admin]
+        - name: organization
+          in: query
+          required: false
+          schema: { type: string }
+      responses:
+        "200":
+          description: Dashboard data
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Dashboard"
+  /planning:
+    post:
+      operationId: generatePlan
+      tags: [planning]
+      summary: Generate an input-sensitive planning recommendation
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/PlanInput"
+      responses:
+        "200":
+          description: Planning recommendation
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/PlanResult"
+  /energy:
+    post:
+      operationId: analyzeEnergy
+      tags: [planning]
+      summary: Analyze energy use for a recipe
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/EnergyInput"
+      responses:
+        "200":
+          description: Energy recommendation
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/EnergyResult"
+  /inventory/calculate:
+    post:
+      operationId: calculateInventory
+      tags: [planning]
+      summary: Calculate ingredient requirements
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/InventoryInput"
+      responses:
+        "200":
+          description: Inventory calculation
+          content:
+            application/json:
+              schema:
+                type: array
+                items: { $ref: "#/components/schemas/InventoryLine" }
+  /recovery:
+    get:
+      operationId: listRecoveryListings
+      tags: [recovery]
+      summary: List recovery marketplace listings
+      responses:
+        "200":
+          description: Active recovery listings
+          content:
+            application/json:
+              schema:
+                type: array
+                items: { $ref: "#/components/schemas/RecoveryListing" }
+    post:
+      operationId: createRecoveryListing
+      tags: [recovery]
+      summary: Create a recovery listing
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/RecoveryInput"
+      responses:
+        "201":
+          description: Recovery listing
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/RecoveryListing"
+  /monitoring/storage:
+    get:
+      operationId: getStorageReadings
+      tags: [monitoring]
+      summary: Get simulated storage telemetry
+      responses:
+        "200":
+          description: Storage readings
+          content:
+            application/json:
+              schema:
+                type: array
+                items: { $ref: "#/components/schemas/StorageReading" }
+  /monitoring/machines:
+    get:
+      operationId: getMachineReadings
+      tags: [monitoring]
+      summary: Get simulated machine telemetry
+      responses:
+        "200":
+          description: Machine readings
+          content:
+            application/json:
+              schema:
+                type: array
+                items: { $ref: "#/components/schemas/MachineReading" }
+  /impact:
+    get:
+      operationId: getImpact
+      tags: [impact]
+      summary: Get activity-derived impact metrics
+      parameters:
+        - name: range
+          in: query
+          required: false
+          schema:
+            type: string
+            enum: [today, month, year]
+            default: month
+      responses:
+        "200":
+          description: Impact metrics
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Impact"
 components:
   schemas:
     HealthStatus:
@@ -33,4 +276,215 @@ components:
           type: string
       required:
         - status
+    RegistrationInput:
+      type: object
+      required: [organizationName, representative, phone, email, password, address, location, proofId, authorityType]
+      properties:
+        organizationName: { type: string, minLength: 2 }
+        representative: { type: string, minLength: 2 }
+        phone: { type: string, minLength: 7 }
+        email: { type: string, format: email }
+        password: { type: string, minLength: 6 }
+        address: { type: string, minLength: 4 }
+        location: { type: string, minLength: 2 }
+        proofId: { type: string, minLength: 2 }
+        authorityType:
+          type: string
+          enum: [kitchen, fpu]
+        fpuType: { type: ["string", "null"] }
+        productCategory: { type: ["string", "null"] }
+    Registration:
+      type: object
+      required: [id, organizationName, authorityType, status, message]
+      properties:
+        id: { type: integer }
+        organizationName: { type: string }
+        authorityType: { type: string }
+        status: { type: string }
+        message: { type: string }
+    OtpInput:
+      type: object
+      required: [otp]
+      properties:
+        otp: { type: string, minLength: 4, maxLength: 6 }
+    Application:
+      type: object
+      required: [id, organizationName, representative, contact, location, authorityType, status, submittedAt]
+      properties:
+        id: { type: integer }
+        organizationName: { type: string }
+        representative: { type: string }
+        contact: { type: string }
+        location: { type: string }
+        authorityType: { type: string }
+        status: { type: string }
+        submittedAt: { type: string }
+        proofId: { type: string }
+    DecisionInput:
+      type: object
+      required: [decision]
+      properties:
+        decision:
+          type: string
+          enum: [approve, reject, more_info]
+        note: { type: string }
+    Dashboard:
+      type: object
+      required: [organizationName, role, status, points, leaderboard, stats, activities]
+      properties:
+        organizationName: { type: string }
+        role: { type: string }
+        status: { type: string }
+        points: { type: integer }
+        leaderboard: { type: integer }
+        stats:
+          type: array
+          items: { $ref: "#/components/schemas/Metric" }
+        activities:
+          type: array
+          items: { $ref: "#/components/schemas/Activity" }
+    Metric:
+      type: object
+      required: [label, value, unit, trend]
+      properties:
+        label: { type: string }
+        value: { type: number }
+        unit: { type: string }
+        trend: { type: number }
+    Activity:
+      type: object
+      required: [title, detail, time, kind]
+      properties:
+        title: { type: string }
+        detail: { type: string }
+        time: { type: string }
+        kind: { type: string }
+    PlanInput:
+      type: object
+      required: [mode, product, date, quantity]
+      properties:
+        mode:
+          type: string
+          enum: [kitchen, fpu]
+        product: { type: string, minLength: 2 }
+        date: { type: string }
+        quantity: { type: integer, minimum: 1 }
+        currentStock: { type: integer, minimum: 0 }
+        confirmedOrders: { type: integer, minimum: 0 }
+        meal: { type: string }
+        events: { type: string }
+        constraints: { type: string }
+    PlanResult:
+      type: object
+      required: [product, expectedDemand, requiredProduction, safetyBuffer, recommended, explanation, history]
+      properties:
+        product: { type: string }
+        expectedDemand: { type: integer }
+        requiredProduction: { type: integer }
+        safetyBuffer: { type: integer }
+        recommended: { type: integer }
+        explanation: { type: string }
+        history:
+          type: array
+          items: { $ref: "#/components/schemas/Metric" }
+    EnergyInput:
+      type: object
+      required: [recipe, quantity, equipment, source]
+      properties:
+        recipe: { type: string }
+        quantity: { type: integer, minimum: 1 }
+        equipment: { type: string }
+        source: { type: string }
+    EnergyResult:
+      type: object
+      required: [method, equipment, estimatedEnergy, savings, co2Reduction]
+      properties:
+        method: { type: string }
+        equipment: { type: string }
+        estimatedEnergy: { type: number }
+        savings: { type: number }
+        co2Reduction: { type: number }
+    InventoryInput:
+      type: object
+      required: [product, quantity]
+      properties:
+        product: { type: string }
+        quantity: { type: integer, minimum: 1 }
+    InventoryLine:
+      type: object
+      required: [ingredient, required, available, shortage, surplus]
+      properties:
+        ingredient: { type: string }
+        required: { type: number }
+        available: { type: number }
+        shortage: { type: number }
+        surplus: { type: number }
+    RecoveryInput:
+      type: object
+      required: [material, quantity, category, condition, location]
+      properties:
+        material: { type: string }
+        quantity: { type: number, minimum: 0 }
+        category: { type: string }
+        condition: { type: string }
+        location: { type: string }
+    RecoveryListing:
+      type: object
+      required: [id, material, quantity, category, condition, location, availability, matchCount]
+      properties:
+        id: { type: integer }
+        material: { type: string }
+        quantity: { type: number }
+        category: { type: string }
+        condition: { type: string }
+        location: { type: string }
+        availability: { type: string }
+        matchCount: { type: integer }
+    StorageReading:
+      type: object
+      required: [room, item, quantity, temperature, humidity, timestamp, status, limit]
+      properties:
+        room: { type: string }
+        item: { type: string }
+        quantity: { type: number }
+        temperature: { type: number }
+        humidity: { type: number }
+        timestamp: { type: string }
+        status: { type: string }
+        limit: { type: number }
+    MachineReading:
+      type: object
+      required: [machine, status, power, energy, runtime, downtime, output, events]
+      properties:
+        machine: { type: string }
+        status: { type: string }
+        power: { type: number }
+        energy: { type: number }
+        runtime: { type: number }
+        downtime: { type: number }
+        output: { type: number }
+        events:
+          type: array
+          items: { type: string }
+    Impact:
+      type: object
+      required: [foodRescued, foodDonated, deliveries, wastePrevented, energySaved, co2Avoided, points, leaderboard, series]
+      properties:
+        foodRescued: { type: number }
+        foodDonated: { type: number }
+        deliveries: { type: integer }
+        wastePrevented: { type: number }
+        energySaved: { type: number }
+        co2Avoided: { type: number }
+        points: { type: integer }
+        leaderboard: { type: integer }
+        series:
+          type: array
+          items: { $ref: "#/components/schemas/ImpactPoint" }
+    ImpactPoint:
+      type: object
+      required: [label, value]
+      properties:
+        label: { type: string }
+        value: { type: number }
 
