@@ -170,7 +170,7 @@ function Dashboard() {
 }
 
 function AdminQueue() {
-  const query = useListApplications();
+  const query = useListApplications({ query: { queryKey: getListApplicationsQueryKey(), refetchInterval: 5000, refetchOnWindowFocus: true } });
   const decide = useDecideApplication();
   const qc = useQueryClient();
   const apps = query.data || [];

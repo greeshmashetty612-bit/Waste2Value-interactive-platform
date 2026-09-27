@@ -50,6 +50,37 @@ const applications: Application[] = [
   },
 ];
 
+async function loadApplications(): Promise<Application[]> {
+  const records = await db.select().from(w2vRecordsTable);
+  const result = new Map<number, Application>(applications.map((application) => [application.id, application]));
+  const decisions = records.filter((record) => record.type === "verification_decision");
+
+  for (const record of records.filter((item) => item.type === "registration")) {
+    const payload = record.payload as Record<string, unknown>;
+    const decision = decisions.find((item) => Number((item.payload as Record<string, unknown>).applicationId) === record.id);
+    const decisionPayload = decision?.payload as Record<string, unknown> | undefined;
+    result.set(record.id, {
+      id: record.id,
+      organizationName: String(payload.organizationName ?? record.organizationName ?? "W2V organization"),
+      representative: String(payload.representative ?? "Pending"),
+      contact: String(payload.email ?? payload.phone ?? "Pending"),
+      location: String(payload.location ?? "Pending"),
+      authorityType: String(payload.authorityType ?? record.authorityType ?? "kitchen"),
+      status: decisionPayload?.decision === "approve"
+        ? "approved"
+        : decisionPayload?.decision === "reject"
+          ? "rejected"
+          : decisionPayload?.decision === "more_info"
+            ? "more_info"
+            : "pending",
+      submittedAt: record.createdAt.toLocaleString(),
+      proofId: String(payload.proofId ?? "Pending"),
+    });
+  }
+
+  return [...result.values()].sort((a, b) => b.id - a.id);
+}
+
 const listings = [
   {
     id: 1,
@@ -105,14 +136,14 @@ router.post("/registrations", async (req, res) => {
     return;
   }
   const input = parsed.data;
-  const id = Math.floor(Date.now() / 1000);
-  await db.insert(w2vRecordsTable).values({
+  const [record] = await db.insert(w2vRecordsTable).values({
     type: "registration",
-    status: "otp_pending",
+    status: "pending",
     organizationName: input.organizationName,
     authorityType: input.authorityType,
     payload: input,
-  });
+  }).returning({ id: w2vRecordsTable.id });
+  const id = record.id;
   res.status(201).json({
     id,
     organizationName: input.organizationName,
@@ -135,16 +166,21 @@ router.post("/registrations/:id/verify", async (req, res) => {
   });
 });
 
-router.get("/applications", (_req, res) => res.json(applications));
+router.get("/applications", async (_req, res) => {
+  res.json(await loadApplications());
+});
 
 router.post("/applications/:id/decision", async (req, res) => {
   const input = DecideApplicationBody.parse(req.body);
-  const application = applications.find((item) => item.id === Number(req.params.id));
+  const allApplications = await loadApplications();
+  const application = allApplications.find((item) => item.id === Number(req.params.id));
   if (!application) {
     res.status(404).json({ error: "Application not found" });
     return;
   }
   application.status = input.decision === "approve" ? "approved" : input.decision === "reject" ? "rejected" : "more_info";
+  const seededApplication = applications.find((item) => item.id === application.id);
+  if (seededApplication) seededApplication.status = application.status;
   await db.insert(w2vRecordsTable).values({
     type: "verification_decision",
     status: application.status,
