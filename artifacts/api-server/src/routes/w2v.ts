@@ -96,7 +96,15 @@ const machineReadings = [
 ];
 
 router.post("/registrations", async (req, res) => {
-  const input = CreateRegistrationBody.parse(req.body);
+  const parsed = CreateRegistrationBody.safeParse(req.body);
+  if (!parsed.success) {
+    res.status(400).json({
+      error: "Invalid registration details",
+      message: parsed.error.issues[0]?.message ?? "Please check the required fields.",
+    });
+    return;
+  }
+  const input = parsed.data;
   const id = Math.floor(Date.now() / 1000);
   await db.insert(w2vRecordsTable).values({
     type: "registration",
